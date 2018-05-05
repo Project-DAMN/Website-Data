@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!--This is the page detailing out all of the sensors available-->
+   <head>
+      <!--contains information regarding the mobile capabilities and the script and stylesheet sources-->
+      <!--This is what will show in the tab on the browser-->
+      <title>Project Aero</title>
+      <meta charset="utf-8">
+      <!-- this gives the site better mobile capabilities and sizing -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--stylesheet to go with our external library/layout design-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!--Google API jquery to allow external data to be downloaded-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!--needed to aid the external stylesheet-->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!--for our personal css sheet-->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:700" rel="stylesheet">
+      <!--our personal stylesheet-->
+      <link rel="stylesheet" href="stylesheet.css">
+   </head>
+   <body id="background">
+      <!-- top navbar! this also has the funcitonality to condense when the screen is sized into a mobile version-->
+      <div class="container-fluid">
+         <nav class="navbar fixed-top navbar-expand-lg d-flex" id="cardbarkground">
+            <a class="navbar-brand" href="#"><img src="Banner.png" alt="Logo" style="height:35px"></a> <!--logo banner-->
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="nav nav-pills">
+                  <li class="nav-item">
+                     <a class="nav-link" href="index.html" id="nav">Dashboard</a> <!-- the ID thing refers to the style in the css file -->
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active" href="sensors.html" id="navActive">Sensors</a> <!--redirects to our sensors page / CURRENT PAGE-->
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="about.html" id="nav">About</a> <!--redirects to our About page-->
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <!--end of top navbar-->
+      <br>
+      <div class="col-sm-9">
+         <div class="well" id="cardbarkground">
+            <h3 id="cardtitle">List of Sensors</h3>
+            <!--our table/chart detailing out all of the sensors-->
+            <div class="table-responsive">
+               <!--means the table will resize itself based on window size-->
+               <table class="table table-hover">
+                  <!--this makes the chart panels light up when the mouse hovers on them-->
+                  <tr>
+                     <!--header row-->
+                     <th scope="col">Sensor Name</th>
+                     <th scope="col">Status</th>
+                     <th scope="col">Location</th>
+                  </tr>
+                  <tbody>
+                     <tr>
+                        <!--first row; all information is input by row, not by column-->
+                        <td><a href="Sensordetail.html">Sensor_01</td>
+                        <td>Online</td>
+                        <td>UNT Quad</td>
+                     </tr>
+                     <tr>
+                        <!-- second row-->
+                        <td><a href="Sensordetail.html">Sensor_02</td>
+                        <td>Online</td>
+                        <td>Keathly's Ranch</td>
+                     </tr>
+                     <tr>
+                        <!-- third row -->
+                        <td><a href="Sensordetail.html">Sensor_03</td>
+                        <td>Offline</td>
+                        <td>13.04, 23.45</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      </div>
+   </body>
+</html>
