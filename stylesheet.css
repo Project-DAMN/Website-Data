@@ -1,0 +1,63 @@
+/*Set height of the grid so .sidenav can be 100% (adjust as needed)*/
+    .row.content {height: 550px}
+    
+    /*Set gray background color and 100% height*/
+    .sidenav {
+      background-color: black;
+      height: 100%;
+    }
+        
+    /*On small screens, set height to 'auto' for the grid*/
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+
+#background {
+	background-color:#f5f5f5;
+}	
+	
+#nav {
+  /*made specifically for the navbar*/
+  font-family: 'Raleway', bold;
+  color: #4db6ac;
+  font-size: 35;
+}
+.nav-tabs > li > a:hover
+{
+    color: #FFFFFF;
+    background: #4db6ac;
+}
+
+#nav:hover	{
+	color: white;
+	background: #4db6ac;
+}
+
+#navActive {
+      color: #FFFFFF;
+      background: #4db6ac;
+      font-family: 'Raleway', bold;
+      font-size: 75;
+}
+
+#cardtitle {
+  /*made for the title of the cards */
+  font-family: 'Raleway', bold;
+  color: #47b124;
+  font-size: 20px;
+}
+
+#hazard {
+	font-family: 'Raleway', bold;
+	color: black;
+	font-size: 35px;
+}
+
+#background{
+	background-color: #F1f1f1;
+}
+
+#cardbarkground{
+	background-color: #ffffff;
+}
+.top-buffer { margin-top:10px; }
