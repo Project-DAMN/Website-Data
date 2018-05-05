@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!--This is the HOMEPAGE/DASHBOARD-->
+   <!--NOTE: do not change the name of the file unless you wish to have a new landing page. "index.html" will automatically be your landing page-->
+   <head>
+      <!--contains information regarding the mobile capabilities and the script and stylesheet sources-->
+      <title>Project Aero</title>
+      <!--This is what will show in the tab on the browser-->
+      <meta charset="utf-8">
+      <!-- this gives the site better mobile capabilities and sizing -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--our personal stylesheet-->
+      <link rel="stylesheet" href="stylesheet.css">
+      <!--stylesheet to go with our external library-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!--layout design-->
+      <!--Google API jquery to allow external data to be downloaded-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!--needed to aid the external stylesheet-->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!--for our personal css sheet-->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:700" rel="stylesheet">
+      <style>
+         <!-- there used to be information here, but it wasn't working properly so we removed it. It can be found on other pages.-->
+      </style>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!--Google line chart Stuff \/ -->
+      <script type="text/javascript">
+         google.charts.load('current', {'packages':['corechart']});
+         google.charts.setOnLoadCallback(drawChart);
+         
+         //Google "Google Charts" and follow their online help for a more extensive review of everything happening here
+         //This is the line chart that won't resize itself
+         function drawChart() {
+         	var data = google.visualization.arrayToDataTable([
+         	  ['Day', 'Denton AQI', 'Dallas Region AQI'],
+              ['29',  44, 44],
+              ['30',  34, 54],
+              ['31', 35, 55],
+              ['1',  23, 48],
+              ['2',  22, 55],
+              ['3',  38, 45],
+              ['4',  46, 47],
+              ['5',  45, 53],
+              ['6',  33, 44],
+              ['7',  31, 48],
+              ['8',  39, 48],
+         	  ['9',  42, 55],
+         	  ['10',  56, 73],
+         	  ['11',  64, 74],
+           	  ['12',  44, 50],
+         	  ['13',  49, 62],
+         	  ['14',  45, 56],
+         	  ['15',  44, 61],
+         	  ['16',  74, 80],
+         	  ['17',  51, 61]
+         	]);
+         
+         	var options = {
+         		subtitle: 'by Years',
+         		animation: {
+         			duration: 1000,
+         			easing: 'out',
+         			startup: true
+         		}
+         	};
+         
+         	var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+         	chart.draw(data, options);
+         
+         	//Here is some code that I found online that was supposed to fix the problem. However, it creates a graph in place of the ozone gauge and removes it entirely, but resizes itself
+         	/*function resize () {
+         	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+         	chart.draw(data, options);
+         	}
+         
+         	window.onload = resize;*/
+         	window.onresize = drawChart; //this should force the computer to redraw the graph when the screen size is changed. Not functioning properly as of this point in time
+         }
+         
+         
+      </script><!--Google line chart Stuff /\ -->
+   </head>
+   <body id="background">
+      <!-- top navbar! this also has the funcitonality to condense when the screen is sized into a mobile version-->
+      <div class="container-fluid">
+         <nav class="navbar fixed-top navbar-expand-lg d-flex" id="cardbarkground">
+            <a class="navbar-brand" href="#"><img src="Banner.png" alt="Logo" style="height:35px"></a> <!--Logo banner-->
+            <!--code to help the navbar collapse when needed-->
+			<div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="nav nav-pills">
+                  <li class="nav-item">
+                     <a class="nav-link active" href="index.html" id="navActive">Dashboard</a> <!-- the ID thing refers to the style in the css file / THIS IS THE CURRENT PAGE-->
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="sensors.html" id="nav">Sensors</a> <!--redirects to our sensors page-->
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="about.html" id="nav">About</a> <!--redirects to our About page-->
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <!--end of top navbar-->
+      <div class="row">
+         <div class="col-sm-9">
+            <!--this is not a full width card. Full width would need to be 12. If the navbar is moved to the side, the navbar takes up three spaces, making this full width-->
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Daily AQI Index Averages</h3>
+               <div id="curve_chart"></div> <!--line chart gets drawn here-->
+            </div>
+         </div>
+         <!-- Small boxes (Stat box) -->
+         <div class="col-sm-3">
+            <!-- small box -->
+            <div class="well well-lg" style="background-color:yellow">
+               <h3 id="hazard">Current Hazard Level</h3>
+               <p>Yellow (Moderate)</p>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-4">
+            <!--three cards across (4*3=12)-->
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Ozone</h3>
+               <!--ozone gauge-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript"> //This is the code for the ozone gauge
+                  google.charts.load('current', {'packages':['gauge']});
+                  google.charts.setOnLoadCallback(drawChart);
+                  
+                  function drawChart() {
+                  
+                    var data = google.visualization.arrayToDataTable([
+                      ['Label', 'Value'],
+                   ['', 60]
+                    ]);
+                  
+                    var options = {
+                  redFrom: 90, redTo: 100, //these dictate what part of the gauge is in the red/harmful
+                  yellowFrom: 75, yellowTo: 100, //dicates the yellow margin of the gauge
+                  minorTicks: 5 //how many ticks we want spread across the gauge
+                    };
+                  
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div')); //creates the chart in the div id associated with it
+                  
+                    chart.draw(data, options); 
+                  }
+               </script>
+               <!-- Source: https://www.tceq.texas.gov/cgi-bin/compliance/monops/8hr_exceed.pl -->
+               <div  id = "chart_div"></div>
+               <!--this is where the gauge gets drawn-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!--this script helps load the gauge-->
+            </div>
+         </div>
+         <div class="col-sm-4">
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Particulate Matter 2.5</h3>
+               <!--Particulate Matter gauge-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript"> //code for the particulate matter gauge. Refer to the ozone gauge if you have any concerns or questions
+                  google.charts.load('current', {'packages':['gauge']});
+                  google.charts.setOnLoadCallback(drawChart);
+                  
+                  function drawChart() {
+                  
+                    var data = google.visualization.arrayToDataTable([
+                      ['Label', 'Value'],
+                   ['', 9.4]
+                    ]);
+                  
+                    var options = {
+                  max: 35,
+                  redFrom: 31.5, redTo: 35,
+                  yellowFrom: 26.25, yellowTo: 31.5,
+                  minorTicks: 5
+                    };
+                  
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div1'));
+                  
+                    chart.draw(data, options);
+                  }
+                  
+               </script>
+               <div  id = "chart_div1"></div>
+               <!--div where the gauge goes-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+            </div>
+         </div>
+         <div class="col-sm-4">
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Total Reactive Nitrogen</h3>
+               <!---Total Reactive NItrogen gauge-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript">//code for the gauge
+                  google.charts.load('current', {'packages':['gauge']});
+                  google.charts.setOnLoadCallback(drawChart);
+                  
+                  function drawChart() {
+                  
+                    var data = google.visualization.arrayToDataTable([
+                      ['Label', 'Value'],
+                   ['', 2.8]
+                    ]);
+                  
+                    var options = {
+                  max: 10,
+                  redTo: 10, redFrom: 9,
+                  yellowTo:9, yellowFrom: 7.5,
+                  minorTicks: 5
+                    };
+                  
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div2'));
+                  
+                    chart.draw(data, options);
+                  }
+               </script>
+               <div  id = "chart_div2"></div>
+               <!--code for where the gauge goes-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-4">
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Nitric Oxide</h3>
+               <!--Nitric Oxide gauge-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript"> //code for the gauge
+                  google.charts.load('current', {'packages':['gauge']});
+                  google.charts.setOnLoadCallback(drawChart);
+                  
+                  function drawChart() {
+                  
+                    var data = google.visualization.arrayToDataTable([
+                      ['Label', 'Value'],
+                   ['', 0.1]
+                    ]);
+                  
+                    var options = {
+                  max: 2,
+                  redTo: 2, redFrom: 1.8,
+                  yellowTo: 1.8, yellowFrom: 1.5,
+                  minorTicks: 5
+                    };
+                  
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div3'));
+                  
+                    chart.draw(data, options);
+                  }
+               </script>
+               <div  id = "chart_div3"></div>
+               <!--where the gauge gets drawn-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+            </div>
+         </div>
+         <div class="col-sm-4">
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Nitrogen Dioxide</h3>
+               <!--Nitrogen Dioxide gauge-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript"> //code for the gauge
+                  google.charts.load('current', {'packages':['gauge']});
+                  google.charts.setOnLoadCallback(drawChart);
+                  
+                  function drawChart() {
+                  
+                    var data = google.visualization.arrayToDataTable([
+                      ['Label', 'Value'],
+                   ['', 2.9]
+                    ]);
+                  
+                    var options = {
+                  max: 10,
+                  redTo: 10, redFrom: 9,
+                  yellowTo:9, yellowFrom: 7.5,
+                  minorTicks: 5
+                    };
+                  
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div4'));
+                  
+                    chart.draw(data, options);
+                  }
+               </script>
+               <div id="chart_div4"></div>
+               <!--gauge gets drawn here-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            </div>
+         </div>
+         <div class="col-sm-4">
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Oxides of Nitrogen</h3>
+               <!--final gauge-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript"> //code for the gauge
+                  google.charts.load('current', {'packages':['gauge']});
+                  google.charts.setOnLoadCallback(drawChart);
+                  
+                  function drawChart() {
+                  
+                    var data = google.visualization.arrayToDataTable([
+                      ['Label', 'Value'],
+                   ['', 2.9]
+                    ]);
+                  
+                    var options = {
+                  max: 10,
+                  redTo: 10, redFrom: 9,
+                  yellowTo:9, yellowFrom: 7.5,
+                  minorTicks: 5
+                    };
+                  
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div5'));
+                  
+                    chart.draw(data, options);
+                  }
+               </script>
+               <div  id = "chart_div5"></div>
+               <!--gauge gets drawn here-->
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-8">
+         <div class="well" id="cardbarkground">
+            <h3 id="cardtitle">Map</h3>
+            <!--This is where our Google Map happens-->
+            <div id="map" style="width:100%;height:400px;"></div>
+            <!-- Use percentages rather than pixels so it adapts to whatever screen size you have. -->
+            <script>
+               function myMap() {
+               var myCenter = {lat:33.214840, lng:-97.133064}; //center of the map
+               var Sensor01 = {lat:33.20748, lng:-97.133064}; //location for each of the sensors (currently hardcoded)
+               var Sensor02 = {lat:33.20649, lng:-97.13671};
+               var Sensor03 = {lat:33.25347, lng:-97.15391};
+               
+               var map = new google.maps.Map(document.getElementById('map'), { //initiates the map
+               	zoom: 12,
+               	center: myCenter
+               });
+               	
+               var marker01 = new google.maps.Marker({ //each one of these initiates the markers on the map
+               	position: Sensor01,
+               	map: map,
+               	title: 'Sensor_01'
+               });
+               
+               var marker02 = new google.maps.Marker({
+               	position: Sensor02,
+               	map: map,
+               	title: 'Sensor_02'
+               });
+               
+               var marker03 = new google.maps.Marker({
+               	position: Sensor03,
+               	map: map,
+               	title: 'Sensor_03'
+               });
+               }
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qj1mN_rsHKI-xzCnorZTDNSfd38xJoM&callback=myMap"></script> <!--API key for the map. DON'T DELETE-->
+         </div>
+      </div>
+      <div class="col-sm-4">
+         <div class="well" id="cardbarkground">
+            <h3 id="cardtitle">Sensors</h3>
+            <!--side card with a table listing all the sensors in the area-->
+            <table class="table">
+               <!--table starts here-->
+               <tr>
+                  <!--header-->
+                  <th scope="col">Sensor Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Location</th>
+               </tr>
+               <tbody>
+                  <!--denotes information within the table and no longer the header-->
+                  <tr>
+                     <!--each TR denotes a row in the table-->
+                     <td><a href="Sensordetail.html">Sensor_01</td>
+                     <td>Online</td>
+                     <td>UNT Quad</td>
+                  </tr>
+                  <tr>
+                     <td><a href="Sensordetail.html">Sensor_02</td>
+                     <td>Online</td>
+                     <td>Keathly's Ranch</td>
+                  </tr>
+                  <tr>
+                     <td><a href="Sensordetail.html">Sensor_03</td>
+                     <td>Offline</td>
+                     <td>13.04, 23.45</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      </div>
+      </div>
+      </div>
+   </body>
+</html>
