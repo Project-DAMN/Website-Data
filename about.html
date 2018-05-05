@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!--This is the ABOUT page-->
+   <head>
+	  <!--contains information regarding the mobile capabilities and the script and stylesheet sources-->
+      <title>Project Aero</title> <!--This is what will show in the tab on the browser-->
+      <meta charset="utf-8">
+	  <!-- this gives the site better mobile capabilities and sizing -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <!--stylesheet to go with our external library-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <!--Google API jquery to allow external data to be downloaded-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <!--needed to aid the external stylesheet-->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <!--for our personal css sheet-->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:700" rel="stylesheet">
+	  <!--our personal stylesheet-->
+      <link rel="stylesheet" href="stylesheet.css">
+      <!--I'm not sure this style header is working 100%-->
+      <style>
+         <!-- Set height of the grid so .sidenav can be 100% (adjust as needed) -->
+         .row.content {height: 550px}
+         <!--Set gray background color and 100% height-->
+         .sidenav {
+         background-color: #f1f1f1;
+         height: 100%;
+         }
+         <!-- On small screens, set height to 'auto' for the grid -->
+         @media screen and (max-width: 767px) {
+         .row.content {height: auto;} 
+         }
+      </style>
+   </head>
+   <body id="background">
+      <!-- top navbar! this only shows when the site is condensed; needs a new color other than black-->
+      <div class="container-fluid">
+         <nav class="navbar fixed-top navbar-expand-lg d-flex" id="cardbarkground">
+            <a class="navbar-brand" href="#"><img src="Banner.png" alt="Logo" style="height:35px"></a> <!-- this calls our logo and places it in the header-->
+            <div class="collapse navbar-collapse" id="navbarNav"> <!-- collapses the top bar when the screen is shortened or reduced-->
+               <ul class="nav nav-pills">
+                  <li class="nav-item">
+                     <a class="nav-link" href="index.html" id="nav">Dashboard</a> <!-- the ID thing refers to the style in the css file -->
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="sensors.html" id="nav">Sensors</a> <!--href refers to whatever page the text links to-->
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active" href="about.html" id="navActive">About</a> <!--redirects to our about page / CURRENT PAGE-->
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <!--end of top navbar-->
+      <br>
+      <div class="row">
+         <div class="col-sm-9"> <!--THIS IS KEY! The website can only visit a total of 9 spaces across. You can mix and match your card sizes, but you cannot exceed or have less than a numerical value of 12-->
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">What is AQI?</h3>
+               <p>Per the EPA issued guidelines, the AQI (also known as the Air Quality Index) is a numerical system used to communicate to the public how polluted
+                  or how polutted the air is forecasted to be. The best analogy to make is to think of the AQI like the temperature on a thermometer. It's designed to 
+                  inform the public the current air quality in a form that they can understand.
+               </p>
+               <br> <!-- this line break is just used to keep things pretty on the site-->
+               <p>The AQI ranges on a scale  of 0-500, with 0 being the least amount of pollutants in the air, and 500 being absolutely deadly for nearly any living 
+                  thing. On average, the range scores for the AQI are as follows:
+               </p>
+               <br><!--same with this break-->
+			   <!--initialize and create the table-->
+               <div class="table-responsive">
+                  <table class="table table-hover">
+                     <!--table information is hardcoded because the standards are very unlikely to change anytime soon-->
+                        <tr>
+                           <th scope="col">AQI Value</th>
+                           <th scope="col">Air Conditions</th>
+                           <th scope="col">Warning Color Associated</th>
+                        </tr>
+                     <tbody>
+                        <tr style="background-color:green">
+                           <td>0 to 50</td>
+                           <td>Good</td>
+                           <td>Green</td>
+                        </tr>
+                        <tr style="background-color: yellow">
+                           <td>51-100</td>
+                           <td>Moderate</td>
+                           <td>Yellow</td>
+                        </tr>
+                        <tr style="background-color: orange">
+                           <td>101-150</td>
+                           <td>Unhealthy for Sensitive Groups</td>
+                           <td>Orange</td>
+                        </tr>
+                        <tr style="background-color: red">
+                           <td>151-200</td>
+                           <td>Unhealthy</td>
+                           <td>Red</td>
+                        </tr>
+                        <tr style="background-color: maroon" class="text-primary"> <!-- text is primary here so that it is visible against the dark background-->
+                           <td>201-500</td>
+                           <td>Very Unhealthy</td>
+                           <td>Maroon</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <br>
+               <p>On average, the Denton AQI hovers around the upper echelon of the the good air quality range to the middle of the moderate air quality range. 
+                  This is all well and good, but it begs the question of how the AQI is calculated. The answer is slightly more complicated than you think. 
+               </p>
+               <br>
+               <p>According to the EPA, the AQI is calculated based on the presence of six pollutants as categorized by the EPA as "critical pollutants". These 
+                  are: Ozone, Particulate Matter 2.5, Total Reactive Nitrogen, Nitric Oxide, Nitrogen Dioxide, and Oxides of Nitrogen. The EPA monitors these pollutants 
+                  and derives the AQI index based on the following formula:
+               </p>
+               <br>
+			   <!-- This whole sentence is coded so that it can appear in the proper format on the webpage. It's a bit complicated, so just follow each bit carefully-->
+               <p>I = ( (I<sub>high</sub> - I<sub>low</sub>) / C<sub>high</sub> - C<sub>low</sub>) ) (C - C<sub>low</sub>) + I<sub>low</sub> </p>
+               <br>
+               <p>It's OK if this is really confusing to you. It's a lot to take in, so let's break it down a bit. </p>
+               <br>
+               <p>The entire equation that you just read essentially dictates that the high's and low's, for a particular pollutant, and then average them against 
+                  the Index's high's and low's in an attempt to average them out. From there, the AQI for each particular pollutant is averaged together and a daily 
+                  AQI is derived from these numbers.
+               </p>
+            </div>
+         </div>
+         <div class="col-sm-3"> <!--Can't be bigger than 3 because the other card is size 9. If you increase this card by any increment, you need to decrease the size of the previous card by the same magnitude--> 
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Additional Resources</h3>
+               <p><a href="https://www.epa.gov/criteria-air-pollutants">The EPA's explaination of the six pollutants.</a></p>
+               <br>
+               <p><a href="https://www.epa.gov/criteria-air-pollutants/process-reviewing-national-ambient-air-quality-standards">How the EPA decides on these standards.</a></p>
+               <br>
+               <p><a href="https://www.tceq.texas.gov/">TCEQ, the Texas branch in charge of enforcing the EPA standards and their own additional standards, in Texas.</a></p>
+               <br>
+            </div>
+         </div>
+      </div>
+      </div>
+      <div class="col-sm-5">
+         <div class="well" id="cardbarkground">
+            <h3 id="cardtitle">The Team</h3>
+            <img src="groupprojectphoto.jpg" alt="Group"> <!--group photo of us-->
+         </div>
+      </div>
+      <div class="row content">
+         <div class="col-sm-4">
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">About Us</h3>
+               <p>We are a group of intergalactic vampires bent on world domination. However, you humans seem to be pretty satisfied with destroying the planet, 
+                  so to combat this, we founded Project Aero, with the hopes that we might still have something left to conquer. The whole purpose of this project 
+                  is to not only inform the average Denton citizen about their air quality (as Denton is our main feeding grounds), but to also ensure that the 
+                  average citizen can feel empowered enough by the information to act on their own accord to try and help. This project is founded with the intention
+                  of allowing the average citizen to help contribute to these numbers, empowering them to take a bigger stance in keeping the planet from rotting. 
+                  We also prefer type B- blood, thank you very much.
+               </p>
+            </div>
+         </div>
+         <div class="col-sm-4"> <!--Reaching 13 here works because it forces this div and the previous div (see above) to stack on top  of each other-->
+            <div class="well" id="cardbarkground">
+               <h3 id="cardtitle">Contact Information</h3>
+               <p>We used to have a hype man called Gary but he tried to stake one of us so we ate him. If you have any questions, please contact Dan and Kyle.
+                  Don't worry; they are still mortals.
+               </p>
+            </div>
+         </div>
+      </div>
+      </div>
+   </body>
+</html>
